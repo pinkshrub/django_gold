@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NinjaGold!!!</title>
+</head>
+<body>
+	<div class="wrapper">
+		Your Gold: <span>  {{request.session.gold_earned}} </span>
+		<div class="works">
+			<div class="job">
+				<h4>Cave</h4>
+				<p> Earn 0-10 golds!</p>
+				<form action="/process_money/" method="post">
+					{% csrf_token %}
+					<input type="hidden" name="action" value="cave">
+					<input type="submit" value="TOIL AWAY">
+				</form>
+			</div>
+			<div class="job">
+				<h4>Farm</h4>
+				<p> earn 3-6 golds!</p>
+				<form action="/process_money/" method="post">
+					{% csrf_token %}
+					<input type="hidden" name="action" value="farm">
+					<input type="submit" value="TOIL AWAY">
+				</form>
+			</div>
+			<div class="job">
+				<h4>House-sit</h4>
+				<p>earn 4 gold</p>
+				<form action="/process_money/" method="post">
+					{% csrf_token %}
+					<input type="hidden" name="action" value="house">
+					<input type="submit" value="TOIL AWAY">
+				</form>
+			</div>
+			<div class="job">
+				<h4>Dragon!</h4>
+				<p>earn a hoard! or die...</p>
+				<form action="/process_money/" method="post">
+					{% csrf_token %}
+					<input type="hidden" name="action" value="dragon">
+					<input type="submit" value="TOIL AWAY">
+				</form>
+			</div>
+		</div>
+		<div class="log">
+		{% for entry in request.session.log %}
+			<p>{{ entry }}</p><br>
+		{% endfor %}	
+		</div>
+		
+	</div>
+</body>
+</html>
